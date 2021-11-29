@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Sun Nov 28 01:49:57 CET 2021
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1638060597405
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact cc.duduhuo.util\:digest-util\:pom\:1.1.1 from/to central (https\://repo.maven.apache.org/maven2)\: Transfer failed for https\://repo.maven.apache.org/maven2/cc/duduhuo/util/digest-util/1.1.1/digest-util-1.1.1.pom

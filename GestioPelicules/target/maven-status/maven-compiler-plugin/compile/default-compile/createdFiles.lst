@@ -1,0 +1,7 @@
+com\example\gestiopelicules\Dades\iCRUDPelicula.class
+com\example\gestiopelicules\Web\ServletLogin.class
+com\example\gestiopelicules\Model\Pelicula.class
+com\example\gestiopelicules\Dades\Conexio.class
+com\example\gestiopelicules\Web\ServletLogout.class
+com\example\gestiopelicules\Dades\CRUDPelicula.class
+com\example\gestiopelicules\Model\Usuari.class

@@ -14,7 +14,7 @@
 
 <h1>Login</h1>
 
-<form name="loginForm" method="post" action="Servlet">
+<form name="loginForm" method="get" action="ServletLogin">
 
     User: <label><br>
     <input type="text" name="usuario"/>
@@ -25,8 +25,6 @@
     <input type="submit" value="LogIn">
 
 </form>
-
-<a href="ServletLogin">Productes</a>
 
 </body>
 </html>
