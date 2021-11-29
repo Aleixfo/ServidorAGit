@@ -54,7 +54,7 @@ public class ServletLogin extends HttpServlet {
                     out.println("Contrasenya Incorrecte");
                 }
                 RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-                dispatcher.include(request, response); //Afegeix el que surt per pantalla al index.jsp
+                dispatcher.include(request, response); //Afegeix el que surt per pantalla al login.jsp
             }
 
             //Desconectam al final

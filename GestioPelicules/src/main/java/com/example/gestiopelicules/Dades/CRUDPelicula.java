@@ -51,7 +51,7 @@ public class CRUDPelicula implements iCRUDPelicula{
 
 
     public void desconectar() throws Exception{
-        con.disconect();
+        con.desconectar();
     }
 
     public ArrayList<Pelicula> readAll() throws Exception {
