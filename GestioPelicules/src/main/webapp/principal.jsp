@@ -1,9 +1,11 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.example.gestiopelicules.Model.Producte"%><!-- Importar classes -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%@page import="java.util.ArrayList" %>
-<%@page import="com.example.gestiopelicules.Model.Producte"%><!-- Importar classes -->
 
-
-<!-- Inclusio de fitxers -->
+        <!-- Inclusio de fitxers -->
 <%/*@jsp:include page="login.jsp" */%>
 
 
@@ -20,6 +22,7 @@
 <body>
 
 <div class="container">
+
 
 
     <%@ include file="header.jsp"%>
@@ -59,42 +62,48 @@
     <hr>
     <table id="taula" class="table table-striped">
 
-        <tr>
-            <th>ID</th>
-            <th>Nom</th>
-            <th>Descripcio</th>
-            <th>Preu</th>
-            <th><input type="button" id="btn-refrescar" class="btn btn-primary" value="Refrescar">&nbsp<button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Inserir
-            </button></th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Coca Cola</td>
-            <td>Beguda Gaseosa</td>
-            <td>2.3</td>
-            <td>
-                <input type="button" id="btn-editar" class="btn btn-warning" value="Editar">
-                <input type="button" id="btn-eliminar" class="btn btn-danger" value="Eliminar">
-            </td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Fanta</td>
-            <td>Beguda Gaseosa</td>
-            <td>1.8</td>
-            <td>
-                <input type="button" id="btn-editar" class="btn btn-warning" value="Editar">
-                <input type="button" id="btn-eliminar" class="btn btn-danger" value="Eliminar">
-            </td>
-        </tr>
+        <%
+            ArrayList<Producte> productes = (ArrayList<Producte>) request.getAttribute("prova");
+        %>
 
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Descripcio</th>
+            <th scope="col">Preu</th>
+            <th><a href="ServletAllPro"><input type="button" id="btn-refrescar" class="btn btn-primary" value="Refrescar"></a></th>
+            <th><button type="button" value="Inserir" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal"></button></th>
+        </tr>
+            <foreach var="producte" items="${prova}">
+                <tr>
 
+                    <td><c:out value="${producte.id}"></c:out></td>
+                    <td><c:out value="${producte.nom}"></c:out></td>
+                    <td><c:out value="${producte.descripcio}"></c:out></td>
+                    <td><c:out value="${producte.preu}"></c:out></td>
+                    <td><a href="ServletEditar?id="${producte.id}" type="button"><input type="button" id="btn-editar" class="btn btn-warning" value="Editar"></a></td>
+                    <td><a href="ServletEliminar?id="${producte.id}" type="button"><input type="button" id="btn-eliminar" class="btn btn-danger" value="Eliminar"></a></td>
 
+                </tr>
+
+            </foreach>
+
+            <%for (Producte pro: productes) { %>
+            <tr>
+
+                <td scope="col"><%=pro.getId()%></td>
+                <td scope="col"><%=pro.getNom()%></td>
+                <td scope="col"><%=pro.getDescripcio()%></td>
+                <td scope="col"><%=pro.getPreu()%></td>
+                <td><a href="ServletEditar?id="${producte.id}" type="button"><input type="button" id="btn-editar" class="btn btn-warning" value="Editar"></a></td>
+                <td><a href="ServletEliminar?id="${producte.id}" type="button"><input type="button" id="btn-eliminar" class="btn btn-danger" value="Eliminar"></a></td>
+
+            </tr>
+            <%}%>
     </table>
     <hr>
     <button class="btn btn-outline-success" type="submit">Cerca</button>
-    <select name="filtrador" id="filtre" class="btn" form="carform">
+    <select name="filtrador" id="filtre" class="btn" >
         <option value="perid">Per ID</option>
         <option value="pernom">Per nom</option>
         <option value="perpreu">Per preu</option>
