@@ -62,10 +62,6 @@
     <hr>
     <table id="taula" class="table table-striped">
 
-        <%
-            ArrayList<Producte> productes = (ArrayList<Producte>) request.getAttribute("prova");
-        %>
-
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Nom</th>
@@ -74,7 +70,7 @@
             <th><a href="ServletAllPro"><input type="button" id="btn-refrescar" class="btn btn-primary" value="Refrescar"></a></th>
             <th><button type="button" value="Inserir" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal"></button></th>
         </tr>
-            <foreach var="producte" items="${prova}">
+            <c:forEach var="producte" items="${prova}">
                 <tr>
 
                     <td><c:out value="${producte.id}"></c:out></td>
@@ -86,9 +82,9 @@
 
                 </tr>
 
-            </foreach>
+            </c:forEach>
 
-            
+
     </table>
     <hr>
     <button class="btn btn-outline-success" type="submit">Cerca</button>

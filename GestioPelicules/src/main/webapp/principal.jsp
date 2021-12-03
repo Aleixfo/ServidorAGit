@@ -62,10 +62,6 @@
     <hr>
     <table id="taula" class="table table-striped">
 
-        <%
-            ArrayList<Producte> productes = (ArrayList<Producte>) request.getAttribute("prova");
-        %>
-
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Nom</th>
@@ -74,7 +70,7 @@
             <th><a href="ServletAllPro"><input type="button" id="btn-refrescar" class="btn btn-primary" value="Refrescar"></a></th>
             <th><button type="button" value="Inserir" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal"></button></th>
         </tr>
-            <foreach var="producte" items="${prova}">
+            <c:forEach var="producte" items="${prova}">
                 <tr>
 
                     <td><c:out value="${producte.id}"></c:out></td>
@@ -86,20 +82,9 @@
 
                 </tr>
 
-            </foreach>
+            </c:forEach>
 
-            <%for (Producte pro: productes) { %>
-            <tr>
 
-                <td scope="col"><%=pro.getId()%></td>
-                <td scope="col"><%=pro.getNom()%></td>
-                <td scope="col"><%=pro.getDescripcio()%></td>
-                <td scope="col"><%=pro.getPreu()%></td>
-                <td><a href="ServletEditar?id="${producte.id}" type="button"><input type="button" id="btn-editar" class="btn btn-warning" value="Editar"></a></td>
-                <td><a href="ServletEliminar?id="${producte.id}" type="button"><input type="button" id="btn-eliminar" class="btn btn-danger" value="Eliminar"></a></td>
-
-            </tr>
-            <%}%>
     </table>
     <hr>
     <button class="btn btn-outline-success" type="submit">Cerca</button>
