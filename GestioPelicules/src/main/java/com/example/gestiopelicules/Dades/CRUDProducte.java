@@ -56,6 +56,18 @@ public class CRUDProducte implements iCRUDProducte {
         state.close();
     }
 
+    public Boolean delete(int id) throws Exception {
+
+        String query = "DELETE FROM productos WHERE id=" + id+";";
+        state = conectar().prepareStatement(query);
+        state.executeUpdate();
+        tancarStatement();
+
+        System.out.println("QUERY EXECUTADA OKKK");
+
+        return true;
+    }
+
     public ArrayList<Producte> readAll() throws Exception {
 
         ArrayList <Producte> products = new ArrayList<>();
@@ -74,15 +86,17 @@ public class CRUDProducte implements iCRUDProducte {
             );
             products.add(product);
         }
+        tancarStatement();
         return products;
     }
 
     public Boolean create(String nom, String descripcio, float preu) throws Exception {
 
 
-        String query = "INSERT INTO productos (nom, descripcio, preu) values ('"+nom+"', "+descripcio+", "+preu+");";
+        String query = "INSERT INTO productos (nom, descripcio, preu) values ('"+nom+"', '"+descripcio+"', "+preu+");";
         state = conectar().prepareStatement(query);
         state.executeUpdate();
+        tancarStatement();
 
         return true;
     }
@@ -92,22 +106,12 @@ public class CRUDProducte implements iCRUDProducte {
         String query = "UPDATE productos set nom='" + nom + "', descripcio='" + descripcio + "', preu=" + preu + " WHERE id=" + id;
         state = conectar().prepareStatement(query);
         state.executeUpdate();
-
-        return true;
-    }
-
-    public Boolean delete(int id) throws Exception {
-
-        String query = "DELETE FROM productos WHERE id=" + id+";";
-        state = conectar().prepareStatement(query);
-        state.executeUpdate();
+        tancarStatement();
 
         return true;
     }
 
     public Producte read(int id) throws Exception {
-
-
 
         String query = "SELECT * FROM productos where id="+id+";";
         state = conectar().prepareStatement(query);
@@ -121,8 +125,10 @@ public class CRUDProducte implements iCRUDProducte {
                     result.getString("descripcio"),
                     result.getFloat("preu")
             );
+            tancarStatement();
             return product;
         }
+        tancarStatement();
         return null;
     }
 

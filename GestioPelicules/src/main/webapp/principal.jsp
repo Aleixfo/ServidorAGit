@@ -5,10 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
-        <!-- Inclusio de fitxers -->
-<%/*@jsp:include page="login.jsp" */%>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,11 +19,11 @@
 
 <div class="container">
 
-
+    <% ArrayList <Producte> productesA = (ArrayList<Producte>) request.getAttribute("prova"); %>
 
     <%@ include file="header.jsp"%>
 
-    <!-- Modal -->
+    <!-- Modal INSERIR -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -37,7 +33,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <form action="afegir" method="post" name="formulariInsert">
+                    <form action="ServletInserir" method="get" name="formulariInsert">
 
 
                         <label for="nom">Nom:     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </label>
@@ -48,12 +44,15 @@
                         <input type="text" name="preu" id="preu">
 
 
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tancar</button>
+                            <button type="submit" value="Insereix" class="btn btn-primary">Insereix</button>
+                        </div>
+
                     </form>
+
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tancar</button>
-                    <button type="submit" class="btn btn-primary">Insereix</button>
-                </div>
+
             </div>
         </div>
     </div>
@@ -68,7 +67,7 @@
             <th scope="col">Descripcio</th>
             <th scope="col">Preu</th>
             <th><a href="ServletAllPro"><input type="button" id="btn-refrescar" class="btn btn-primary" value="Refrescar"></a></th>
-            <th><button type="button" value="Inserir" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal"></button></th>
+            <th><button type="button" value="Inserir" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Inserir</button></th>
         </tr>
             <c:forEach var="producte" items="${prova}">
                 <tr>
@@ -77,16 +76,52 @@
                     <td><c:out value="${producte.nom}"></c:out></td>
                     <td><c:out value="${producte.descripcio}"></c:out></td>
                     <td><c:out value="${producte.preu}"></c:out></td>
-                    <td><a href="ServletEditar?id="${producte.id}" type="button"><input type="button" id="btn-editar" class="btn btn-warning" value="Editar"></a></td>
-                    <td><a href="ServletEliminar?id="${producte.id}" type="button"><input type="button" id="btn-eliminar" class="btn btn-danger" value="Eliminar"></a></td>
+                    <td><button type="button" value="Update" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal2">Update</button></td>
+                    <td><a href="ServletEliminar?id=${producte.id}"><input type="button" id="btn-eliminar" class="btn btn-danger" value="Eliminar"></a></td>
 
                 </tr>
+
+                <!-- Modal MODIFICAR -->
+                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel2">Modifica el producte</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form action="ServletUpdate" method="get" name="formulariUpdate">
+
+                                    <label for="id">ID:     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </label>
+                                    <input type="text" value="${producte.id}" name="id" id="id" readonly="readonly"><br>
+                                    <label for="nom">Nom:     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </label>
+                                    <input type="text" value="${producte.nom}" name="nom"><br>
+                                    <label for="descripcio">Descripcio: </label>
+                                    <input type="text" value="${producte.descripcio}" name="descripcio"><br>
+                                    <label for="preu">Preu:    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                                    <input type="text" value="${producte.preu}" name="preu">
+
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" value="Insereix" class="btn btn-primary">Modificar</button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
 
             </c:forEach>
 
 
     </table>
-    <hr>
+
+    <!-- <hr>
     <button class="btn btn-outline-success" type="submit">Cerca</button>
     <select name="filtrador" id="filtre" class="btn" >
         <option value="perid">Per ID</option>
@@ -94,14 +129,11 @@
         <option value="perpreu">Per preu</option>
     </select>
     <br><br>
-    <input class="form-control me-2" type="search" placeholder="Cerca" aria-label="Search">
+    <input class="form-control me-2" type="search" placeholder="Cerca" aria-label="Search"> -->
 
     <%@ include file="footer.jsp"%>
 
 </div>
-
-
-
 
 </body>
 </html>

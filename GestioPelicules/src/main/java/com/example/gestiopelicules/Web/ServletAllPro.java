@@ -38,7 +38,7 @@ public class ServletAllPro extends HttpServlet {
             request.getRequestDispatcher("principal.jsp").forward(request, response);
 
 
-
+            crud.desconectar();
 
 
 

@@ -10,6 +10,12 @@ public class ServletLogout extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        HttpSession sessio = request.getSession();
+        System.out.println("S'ha invalidat la sessio: " + sessio.getAttribute("usuari"));
+        sessio.invalidate();
+        response.sendRedirect("index.jsp");
+
+
     }
 
     @Override

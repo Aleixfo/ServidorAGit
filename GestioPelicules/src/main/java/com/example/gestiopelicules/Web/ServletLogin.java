@@ -41,8 +41,15 @@ public class ServletLogin extends HttpServlet {
             Usuari user = crud.read(usuario);
 
             if (user.getUsername().equals(usuario) && user.getPassword().equals(password)){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("principal.jsp");
-                dispatcher.forward(request, response); //Fa la redirecció
+
+                HttpSession sessio= request.getSession();
+                sessio.setAttribute("usuari",user);
+                if (sessio != null) {
+                    System.out.println("S'ha creat la sessio: Usuari -> " + user);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("principal.jsp");
+                    dispatcher.forward(request, response); //Fa la redirecció
+                }
+
             } else {
                 if (usuario == ""){
                     out.println("No has introduit usuari<br>");

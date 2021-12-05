@@ -9,7 +9,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="principal.jsp.jsp">Productes</a>
+        <a class="navbar-brand" href="principal.jsp">Productes</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -19,11 +19,11 @@
                     <a class="nav-link active" aria-current="page" href="#">Tenda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="carrito.jsp">Carrito</a>
+                    <a class="nav-link" href="#">Carrito</a>
                 </li>
             </ul>
             <form class="d-flex">
-                <button class="btn btn-outline-success" type="button">Log Out</button>
+                <a href="ServletLogout"><button class="btn btn-outline-success" type="button">Log Out</button></a>
             </form>
         </div>
     </div>

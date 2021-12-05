@@ -8,8 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <br>
 <footer style="background-color: whitesmoke; height: 200px;border-radius: 10px;text-align: center;padding-top: 70px;">
-    <a href="Greetings">Opciones</a>
-    <a href="Greetings">Contact Us</a>
-    <a href="Greetings">Politics</a>
-    <a href="Greetings">Greetings</a>
+    <a href="#">Opciones</a>
+    <a href="#">Contact Us</a>
+    <a href="#">Politics</a>
+    <a href="#">Greetings</a>
 </footer>
