@@ -120,6 +120,7 @@
 
 
     </table>
+
     <!-- <hr>
     <button class="btn btn-outline-success" type="submit">Cerca</button>
     <select name="filtrador" id="filtre" class="btn" >

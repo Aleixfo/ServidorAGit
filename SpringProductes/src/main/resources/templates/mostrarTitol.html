@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<!-- Afegir al ns de thymeleaf per poder afegir etiquetes -->
+<head>
+    <meta charset="UTF-8">
+    <title>Hola caracola</title>
+</head>
+<body>
+    <h1 th:text="${titol}">Hola mundo</h1>
+
+    <!-- Pasar variables de la vista al programa -->
+    <form name="Resposta" method="post" action="/prova2/respo"><!-- Ruta controlador + ruta metode -->
+
+        <input type="text" name="nom">
+        <input type="submit" name="btn-submit" value="Enviar">
+
+
+    </form>
+
+</body>
+</html>

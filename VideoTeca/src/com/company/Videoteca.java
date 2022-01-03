@@ -170,7 +170,7 @@ public class Videoteca extends JFrame {
         //setSize(w, h) -> Estableix l'ample i l'altura de la finestra
         //setSize(600, 1000);
         //setBounds(x, y, w, h) -> Els dos metodes anterior combinats
-        this.setBounds(anchuraPantalla/3, 30, 600, 1000 );
+        this.setBounds(anchuraPantalla/3, 30, 600, 700 );
 
         //Fa la finestra visible
         this.setVisible(true);

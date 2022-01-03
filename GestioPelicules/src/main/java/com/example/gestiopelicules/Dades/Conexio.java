@@ -8,7 +8,7 @@ public class Conexio {
 
     private Connection con;
     private static final String url = "jdbc:mysql://localhost:3306/productes";
-    private static final String usuario = "root";
+    private static final String usuario = "admin";
     private static final String password = "admin";
     private static final String driver = "com.mysql.cj.jdbc.Driver";
 
